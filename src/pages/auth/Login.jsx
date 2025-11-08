@@ -14,12 +14,13 @@ export default function Login() {
 
     useEffect(() => {
         if (userData.isLoggedIn) {
-        navigate('../home');
+        navigate('../');
     }
     },[userData.isLoggedIn]);
 
-  const handleLogin = () => {
-    if(email.trim().toLowerCase() === userData.email.trim().toLowerCase() && password == userData.password) {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if(email == userData.email && password == userData.password) {
       setIsLoggedIn(true);
       navigate('../home');
     } else {
@@ -28,14 +29,14 @@ export default function Login() {
   };
   return (
     <>
-      <div className="bg-gray-700 text-gray-100 items-center  h-[81vh]">
+      <form className="bg-gray-700 text-gray-100 items-center  h-[81vh]" onSubmit={handleLogin}>
             <h2>Login</h2>
             <input type="text" placeholder='Enter your email' value={email} onChange={(e) => {setEmail(e.target.value)}} required/><br /> <br />
             <input type="password" placeholder='Enter your password' value={password} onChange={(e) => {setPassword(e.target.value)}} required/><br /> <br />
             <p>{}</p>
-            <button type="submit" onClick={() => handleLogin()}>Login</button>
+            <button type="submit">Login</button>
             <p>Not registered yet? <Link to='/register' className='text-red-500'>Register now</Link></p>
-        </div>
+        </form>
     </>
   )
 }

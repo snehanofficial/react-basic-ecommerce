@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import useAuthStore from '../hooks/useAuthStore'
 
 export default function Navbar() {
+  const user = useAuthStore();
   return (
     <nav className='flex justify-between whitespace-nowrap items-center bg-gray-800 p-5 text-white text-lg shadow-md'>
       <div className="pl-8 font-bold"><Link to='/'>SS Mart</Link></div>
@@ -9,7 +11,11 @@ export default function Navbar() {
       <div className="">
         <Link to='/cart' className='p-8'>Cart</Link>
         <Link to='/orders' className='p-8'>Orders</Link>
-        <Link to={`/login`} className='p-8'>{`Login`}</Link>
+
+        
+        {!user.isLoggedin && <Link to={`/login`} className='p-8'>Login</Link>}
+        {user.isLoggedin && <Link to={`/logout`} className='p-8'>{user.name.toUpperCase()}, Logout</Link>}
+
       </div>
     </nav>
   )

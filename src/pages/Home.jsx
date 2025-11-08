@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
     <h1>Profile</h1>
-    <p>Hello, {name} 👋🏻<br />Your enrollment number is {email.toUpperCase()}</p>
+    <p>Hello, {name} 👋🏻<br />Your email is {email.toUpperCase()}</p>
     <button onClick={() => handleLogout()}>Logout</button>
     </>
   )

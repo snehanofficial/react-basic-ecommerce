@@ -5,11 +5,12 @@ import { persist } from 'zustand/middleware';
 const useAuthStore = create(
     persist(
         set => ({
-        email: '',
-        password: '',
+        email: '1',
+        password: '1',
+        name: '1',
         isLoggedIn: false,
         setIsLoggedIn: (status) => set({isLoggedIn: status}),
-        setUser: (user) => set({user})
+        setUser: ({email, name, password}) => set({email, name, password})
     })
 ),
     {

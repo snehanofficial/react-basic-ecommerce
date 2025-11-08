@@ -15,13 +15,10 @@ export default function Register() {
         if (!email || !name || !password) {
             alert("Please fill all fields!");
         } else {
-            const user = {email, name, password};
-            setUser(user);
-
-            if (user) {
-                alert("Signed up successfully!\nPlease login to continue.");
-                navigate('/login');
-        };
+            // const user = {email, name, password};
+            setUser({email, name, password});
+            alert("Signed up successfully!\nPlease login to continue.");
+            navigate('/login');
         }
     };
   return (
